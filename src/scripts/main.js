@@ -9,34 +9,50 @@ const firstPromise = new Promise((resolve, reject) => {
 });
 
 const secondPromise = new Promise((resolve, reject) => {
-  document.addEventListener('click', () => {
-    resolve('Second promise was resolved');
-  });
+  document.addEventListener(
+    'click',
+    () => {
+      resolve('Second promise was resolved');
+    },
+    { once: true },
+  );
 
-  document.addEventListener('contextmenu', () => {
-    resolve('Second promise was resolved');
-  });
+  document.addEventListener(
+    'contextmenu',
+    () => {
+      resolve('Second promise was resolved');
+    },
+    { once: true },
+  );
 });
 
 const thirdPromise = new Promise((resolve, reject) => {
   let leftClick;
   let rightClick;
 
-  document.addEventListener('click', () => {
-    leftClick = true;
+  document.addEventListener(
+    'click',
+    () => {
+      leftClick = true;
 
-    if (leftClick && rightClick) {
-      resolve('Third promise was resolved');
-    }
-  });
+      if (leftClick && rightClick) {
+        resolve('Third promise was resolved');
+      }
+    },
+    { once: true },
+  );
 
-  document.addEventListener('contextmenu', () => {
-    rightClick = true;
+  document.addEventListener(
+    'contextmenu',
+    () => {
+      rightClick = true;
 
-    if (leftClick && rightClick) {
-      resolve('Third promise was resolved');
-    }
-  });
+      if (leftClick && rightClick) {
+        resolve('Third promise was resolved');
+      }
+    },
+    { once: true },
+  );
 });
 
 function success(message) {
